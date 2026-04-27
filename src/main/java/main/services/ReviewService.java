@@ -1,5 +1,6 @@
 package main.services;
 
+import main.dtos.ReviewRequest;
 import main.models.Book;
 import main.models.Review;
 import main.repositories.BookRepository;
@@ -17,13 +18,13 @@ public class ReviewService {
         this.bookRepository = bookRepository;
     }
 
-    public Review addReview(Long bookId, int rating, String comment) {
+    public Review addReview(Long bookId, ReviewRequest reviewRequest) {
         Book book = bookRepository.findById(bookId).orElseThrow( () -> new RuntimeException("Book not found"));
 
         Review review = new Review();
         review.setBook(book);
-        review.setRating(rating);
-        review.setComment(comment);
+        review.setRating(reviewRequest.getRating());
+        review.setComment(reviewRequest.getComment());
 
         return reviewRepository.save(review);
     }

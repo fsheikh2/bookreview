@@ -1,5 +1,6 @@
 package main.services;
 
+import main.dtos.BookRequest;
 import main.models.Book;
 import main.models.Review;
 import main.repositories.BookRepository;
@@ -14,10 +15,11 @@ public class BookService {
         this.bookRepository = bookRepository;
     }
 
-    public Book createBook(String title, String author){
+    public Book createBook(BookRequest bookRequest){
         Book book = new Book();
-        book.setTitle(title);
-        book.setAuthor(author);
+        book.setTitle(bookRequest.getTitle());
+        book.setAuthor(bookRequest.getAuthor());
+
         return bookRepository.save(book);
     }
 
