@@ -32,4 +32,8 @@ public class BookService {
                 .average()
                 .orElse(0.0);
     }
+
+    public Book getBookById(Long bookId){
+        return bookRepository.findById(bookId).orElseThrow( () -> new RuntimeException("Book not found"));
+    }
 }
