@@ -17,4 +17,17 @@ public class BookResponse {
         this.averageRating = averageRating;
         this.reviews = reviews;
     }
+
+    public Long getId() { return id; }
+    public String getTitle() { return title; }
+    public String getAuthor() { return author; }
+    public double getAverageRating() { return averageRating; }
+    public List<ReviewResponse> getReviews() { return reviews; }
+
+    public void setId(Long id) { this.id = id; }
+    public void setTitle(String title) { this.title = title; }
+    public void setAuthor(String author) { this.author = author; }
+    public void setAverageRating(double averageRating) { this.averageRating = averageRating; }
+    public void setReviews(List<ReviewResponse> reviews) { this.reviews = reviews; }
+
 }
