@@ -12,6 +12,8 @@ import main.services.BookService;
 import main.services.ReviewService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/books")
 public class BookController {
@@ -35,6 +37,14 @@ public class BookController {
     public BookResponse getBookById(@PathVariable("id") Long id) {
         Book book = bookService.getBookById(id);
         return BookMapper.mapToBookResponse(book);
+    }
+
+    @GetMapping
+    public List<BookResponse> getAllBooks() {
+        return bookService.getAllBooks()
+                .stream()
+                .map(BookMapper::mapToBookResponse)
+                .toList();
     }
 
     @PostMapping("/{id}/reviews")

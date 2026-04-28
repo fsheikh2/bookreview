@@ -2,6 +2,7 @@ package main.models;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,7 +16,7 @@ public class Book {
     private String author;
 
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
-    private List<Review> reviews;
+    private List<Review> reviews = new ArrayList<>();
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -27,4 +28,6 @@ public class Book {
     public void setAuthor(String author) { this.author = author; }
 
     public List<Review> getReviews() { return reviews; }
+    public void setReviews(List<Review> reviews) { this.reviews = reviews; }
+    public void addReview(Review review) { this.reviews.add(review); }
 }

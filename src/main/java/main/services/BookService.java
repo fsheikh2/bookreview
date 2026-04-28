@@ -6,6 +6,8 @@ import main.models.Review;
 import main.repositories.BookRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BookService {
 
@@ -35,5 +37,9 @@ public class BookService {
 
     public Book getBookById(Long bookId){
         return bookRepository.findById(bookId).orElseThrow( () -> new RuntimeException("Book not found"));
+    }
+
+    public List<Book> getAllBooks(){
+        return bookRepository.findAll();
     }
 }
