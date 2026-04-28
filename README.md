@@ -39,3 +39,10 @@ GET /books/{id}
 
 ### Add Review
 POST /books/{id}/reviews
+
+## Postman Collection
+
+Import the collection located in:
+postman/BookReviewCollection.json
+
+This contains ready-to-use API requests.
