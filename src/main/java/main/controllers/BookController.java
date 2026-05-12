@@ -10,6 +10,8 @@ import main.models.Book;
 import main.models.Review;
 import main.services.BookService;
 import main.services.ReviewService;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,8 +42,8 @@ public class BookController {
     }
 
     @GetMapping
-    public List<BookResponse> getAllBooks() {
-        return bookService.getAllBooks()
+    public List<BookResponse> getAllBooks(@PageableDefault(size = 10, sort = "title") Pageable pageable) {
+        return bookService.getAllBooks(pageable)
                 .stream()
                 .map(BookMapper::mapToBookResponse)
                 .toList();

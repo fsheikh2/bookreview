@@ -4,6 +4,8 @@ import main.dtos.BookRequest;
 import main.models.Book;
 import main.models.Review;
 import main.repositories.BookRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,7 +41,7 @@ public class BookService {
         return bookRepository.findById(bookId).orElseThrow( () -> new RuntimeException("Book not found"));
     }
 
-    public List<Book> getAllBooks(){
-        return bookRepository.findAll();
+    public Page<Book> getAllBooks(Pageable pageable){
+        return bookRepository.findAll(pageable);
     }
 }
